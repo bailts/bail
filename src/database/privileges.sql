@@ -1,11 +1,11 @@
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'adm00n';
-CREATE USER 'employee'@'localhost' IDENTIFIED BY 'empl00yee';
+CREATE USER IF NOT EXISTS `adminBail`@`localhost` IDENTIFIED BY 'adm00n';
+CREATE USER IF NOT EXISTS `employeeBail`@`localhost` IDENTIFIED BY 'empl00yee';
 
-GRANT * ON bail.* TO 'admin@localhost';
+GRANT ALL ON `bail`.* TO `adminBail`@`localhost`;
 
-GRANT * ON bail.user TO 'employee@localhost';
-GRANT * ON bail.mail TO 'employee@localhost';
-GRANT * ON bail.disposition TO 'employee@localhost';
-GRANT SELECT ON bail.mailtype TO 'employee@localhost';
+GRANT ALL ON `bail`.`user` TO `employeeBail`@`localhost`;
+GRANT ALL ON `bail`.`mail` TO `employeeBail`@`localhost`;
+GRANT ALL ON `bail`.`disposition` TO `employeeBail`@`localhost`;
+GRANT SELECT ON `bail`.`mailtype` TO `employeeBail`@`localhost`;
 
 FLUSH PRIVILEGES;

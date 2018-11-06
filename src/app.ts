@@ -3,10 +3,12 @@ import * as session from 'express-session'
 import * as ejs from 'ejs'
 import * as knex from 'knex'
 import * as multiparty from 'multiparty'
-import * as parse from 'body-parser'
+import * as bodyParser from 'body-parser'
 import * as moment from 'moment'
 import * as postcss from 'postcss'
 import * as fs from 'fs'
+
+import userRouter from './routes/user'
 import StaticRouter from './routes/static'
 
 
@@ -42,6 +44,12 @@ app.get('/static/styles/main.css', (req, res) => {
     res.type('css')
     res.send(css)
 })
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
+
+// app.use('/api/mailType', mailTypeRouter)
+app.use('/api/user', userRouter)
 
 app.listen('4200', async (e) => {
     console.log('Listening on :4200')

@@ -2,11 +2,11 @@ const config = {
     host: "localhost",
     database: "bail",
     admin: {
-        user: "admin",
+        user: "adminBail",
         password: "adm00n"
     },
     employee: {
-        user: "employee",
+        user: "employeeBail",
         password: "empl00yee"
     }
 }
