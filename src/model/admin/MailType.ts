@@ -1,5 +1,6 @@
 import { adminConnection as db } from '../../module/database'
-import { isNullOrUndefined } from 'util'
+
+const _result = { success: false, message: "", error: null }
 
 class MailType {
 
@@ -15,7 +16,7 @@ class MailType {
     }
 
     public static async insert(type: String) {
-        const result = { success: false, message: "", error: null }
+        const result = _result
 
         try {
             const success = await db('mailtype').insert({ type })
