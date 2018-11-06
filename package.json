@@ -1,0 +1,32 @@
+{
+  "name": "bail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bailts/bail.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bailts/bail/issues"
+  },
+  "homepage": "https://github.com/bailts/bail#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "knex": "^0.15.2",
+    "moment-timezone": "^0.5.23",
+    "multiparty": "^4.2.1",
+    "mysql2": "^1.6.3",
+    "postcss": "^7.0.5",
+    "postcss-preset-env": "^6.3.1",
+    "tailwindcss": "^0.7.2"
+  }
+}
