@@ -1,39 +1,41 @@
 {
-  "name": "bail",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run build && node dist/app.js",
-    "build": "tsc src/app.ts --outDir dist/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bailts/bail.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bailts/bail/issues"
-  },
-  "homepage": "https://github.com/bailts/bail#readme",
-  "dependencies": {
-    "@types/ejs": "^2.6.0",
-    "@types/express": "^4.16.0",
-    "@types/express-session": "^1.15.11",
-    "@types/knex": "^0.15.0",
-    "@types/multiparty": "0.0.31",
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "knex": "^0.15.2",
-    "moment": "^2.22.2",
-    "multiparty": "^4.2.1",
-    "mysql2": "^1.6.3",
-    "postcss": "^7.0.5",
-    "postcss-preset-env": "^6.3.1",
-    "tailwindcss": "^0.7.2"
-  }
+    "name": "bail",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "npm run build && node dist/app.js",
+        "build": "tsc src/app.ts --outDir dist/ --lib es2016"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bailts/bail.git"
+    },
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/bailts/bail/issues"
+    },
+    "homepage": "https://github.com/bailts/bail#readme",
+    "dependencies": {
+        "@types/ejs": "^2.6.0",
+        "@types/express": "^4.16.0",
+        "@types/express-session": "^1.15.11",
+        "@types/knex": "^0.15.0",
+        "@types/multiparty": "0.0.31",
+        "body-parser": "^1.18.3",
+        "ejs": "^2.6.1",
+        "express": "^4.16.4",
+        "express-mysql-session": "^2.0.1",
+        "express-session": "^1.15.6",
+        "knex": "^0.15.2",
+        "moment": "^2.22.2",
+        "multiparty": "^4.2.1",
+        "mysql": "^2.16.0",
+        "mysql2": "^1.6.3",
+        "postcss": "^7.0.5",
+        "postcss-preset-env": "^6.3.1",
+        "tailwindcss": "^0.7.2"
+    }
 }
