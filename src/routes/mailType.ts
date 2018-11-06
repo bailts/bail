@@ -20,4 +20,8 @@ Router.post('/:id/update', async (req, res) => {
     res.send(await MailType.update(id, type))
 })
 
+Router.get('/:id/delete', async (req, res) => {
+    res.send(await MailType.delete(req.params.id))
+})
+
 export default Router
