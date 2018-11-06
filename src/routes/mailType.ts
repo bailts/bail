@@ -11,4 +11,8 @@ Router.get('/:id', async (req, res) => {
     res.send(await MailType.get(req.params.id))
 })
 
+Router.post('/new', async (req, res) => {
+    res.send(await MailType.insert(req.body.type))
+})
+
 export default Router
