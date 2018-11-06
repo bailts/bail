@@ -3,7 +3,7 @@ import * as session from 'express-session'
 import * as ejs from 'ejs'
 import * as knex from 'knex'
 import * as multiparty from 'multiparty'
-import * as parse from 'body-parser'
+import * as bodyParser from 'body-parser'
 import * as moment from 'moment'
 import * as postcss from 'postcss'
 
@@ -14,6 +14,8 @@ const cssEnv = require('postcss-preset-env')
 const tailwind = require('tailwindcss')(process.cwd() + '/tailwind.js')
 
 const app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
 
 app.use('/api/mailType', mailTypeRouter)
 
