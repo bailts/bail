@@ -16,8 +16,7 @@ Router.get('/:id', async (req, res) => {
 })
 
 Router.post('/:id/update', async (req, res) => {
-    const { id, type } = req.body
-    res.send(await MailType.update(id, type))
+    res.send(await MailType.update(req.params.id, req.body.type))
 })
 
 Router.get('/:id/delete', async (req, res) => {
