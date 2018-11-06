@@ -15,4 +15,9 @@ Router.post('/new', async (req, res) => {
     res.send(await MailType.insert(req.body.type))
 })
 
+Router.post('/:id/update', async (req, res) => {
+    const { id, type } = req.body
+    res.send(await MailType.update(id, type))
+})
+
 export default Router
