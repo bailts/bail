@@ -1,11 +1,13 @@
-import express from 'express'
-import session from 'express-session'
-import ejs from 'ejs'
-import knex from 'knex'
-import multiparty from 'multiparty'
-import parse from 'body-parser'
-import moment from 'moment'
-import postcss from 'postcss'
+import * as express from 'express'
+import * as session from 'express-session'
+import * as ejs from 'ejs'
+import * as knex from 'knex'
+import * as multiparty from 'multiparty'
+import * as parse from 'body-parser'
+import * as moment from 'moment'
+import * as postcss from 'postcss'
+
+import mailTypeRouter from './routes/mailType'
 
 const mysql = require('mysql2')
 const cssEnv = require('postcss-preset-env')
@@ -13,8 +15,8 @@ const tailwind = require('tailwindcss')(process.cwd() + '/tailwind.js')
 
 const app = express()
 
+app.use('/api/mailType', mailTypeRouter)
+
 app.listen('4200', (e) => {
     console.log('Listening on :4200')
 })
-
-
