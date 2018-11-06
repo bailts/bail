@@ -17,8 +17,8 @@ Router.get('/:id', async (req, res) => {
 })
 
 Router.put('/:id/update', async (req, res) => {
-    const { id, username, password, fullname, level } = req.body
-    res.send(await User.update(id, username, password, fullname, level))
+    const { username, password, fullname, level } = req.body
+    res.send(await User.update(req.params.id, username, password, fullname, level))
 })
 
 Router.get('/:id/delete', async (req, res) => {
