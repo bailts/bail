@@ -1,4 +1,5 @@
 import * as express from 'express'
+import User from '../model/employee/User'
 
 const Static = express.Router()
 
@@ -28,6 +29,11 @@ Static.get('/mail/:id/edit', (req, res) => {
 
 Static.get('/disposition', (req, res) => {
     res.render('despacito')
+})
+
+Static.get('/users', async (req, res) => {
+    let data = await User.get()
+    res.render('user', {users: data})
 })
 
 export default Static
