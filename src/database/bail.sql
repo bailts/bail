@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2018 at 05:29 AM
+-- Generation Time: Nov 06, 2018 at 07:17 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -59,6 +59,7 @@ CREATE TABLE `mail` (
   `mailSubject` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `fileUpload` varchar(255) NOT NULL,
+  `status` enum('IN','OUT') NOT NULL,
   `mailTypeId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
