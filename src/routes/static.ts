@@ -36,4 +36,8 @@ Static.get('/users', async (req, res) => {
     res.render('user', {users: data})
 })
 
+Static.get('/user/new', (req, res) => {
+    res.render('addEditUser', {operation: 'Tambah'})
+})
+
 export default Static

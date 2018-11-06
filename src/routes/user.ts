@@ -13,7 +13,11 @@ Router.get('/:id', async (req, res) => {
 
 Router.post('/new', async (req, res) => {
     const {username, password,fullname,level} = req.body
-    res.send(await User.insert(username, password, fullname, level))
+    let data = await User.insert(username, password, fullname, level)
+    if(req.accepts('html'))
+        res.redirect('/users')
+    else
+        res.send(data)
 })
 
 export default Router
