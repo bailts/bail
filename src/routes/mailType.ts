@@ -7,12 +7,20 @@ Router.get('/', async (req, res) => {
     res.send(await MailType.get())
 })
 
+Router.post('/new', async (req, res) => {
+    res.send(await MailType.insert(req.body.type))
+})
+
 Router.get('/:id', async (req, res) => {
     res.send(await MailType.get(req.params.id))
 })
 
-Router.post('/new', async (req, res) => {
-    res.send(await MailType.insert(req.body.type))
+Router.post('/:id/update', async (req, res) => {
+    res.send(await MailType.update(req.params.id, req.body.type))
+})
+
+Router.get('/:id/delete', async (req, res) => {
+    res.send(await MailType.delete(req.params.id))
 })
 
 export default Router

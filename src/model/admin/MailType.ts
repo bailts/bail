@@ -32,6 +32,42 @@ class MailType {
             return result
         }
     }
+
+    public static async update(id: Number, type: String) {
+        const result = _result
+
+        try {
+            const success = await db('mailtype').update({ type }).where({ id })
+            if (success == 1) {
+                result.success = true
+                result.message = "Success"
+            } else {
+                result.message = "Unable to update new mailType"
+            }
+            return result
+        } catch (err) {
+            result.error = err.message
+            return result
+        }
+    }
+
+    public static async delete(id: Number) {
+        const result = _result
+
+        try {
+            const success = await db('mailtype').delete().where({ id })
+            if (success == 1) {
+                result.success = true
+                result.message = "Success"
+            } else {
+                result.message = "Unable to delete mailType"
+            }
+            return result
+        } catch (err) {
+            result.error = err.message
+            return result
+        }
+    }
 }
 
 export default MailType
