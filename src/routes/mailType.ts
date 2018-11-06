@@ -7,12 +7,12 @@ Router.get('/', async (req, res) => {
     res.send(await MailType.get())
 })
 
-Router.get('/:id', async (req, res) => {
-    res.send(await MailType.get(req.params.id))
-})
-
 Router.post('/new', async (req, res) => {
     res.send(await MailType.insert(req.body.type))
+})
+
+Router.get('/:id', async (req, res) => {
+    res.send(await MailType.get(req.params.id))
 })
 
 Router.post('/:id/update', async (req, res) => {
