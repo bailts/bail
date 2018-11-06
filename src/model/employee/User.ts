@@ -1,5 +1,4 @@
 import { employeeConnection as db } from '../../module/database'
-import { isNullOrUndefined } from 'util'
 
 const _result = { success: false, message: "", error: null }
 
