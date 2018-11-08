@@ -15,17 +15,17 @@
                 <h1 class="font-normal text-grey-darkest flex-grow">Surat <%=type%></h1>
                 <input class="border p-2 rounded"/>
                 <button class="py-2 px-4 bg-green text-white rounded ml-2">Cari</button>
-                <button class="py-2 px-4 bg-green text-white rounded ml-2" onclick="location.href='/mail/new'">Buat Arsip</button>
+                <button class="py-2 px-4 bg-green text-white rounded ml-2" onclick="location.href='/<%=(type=="Masuk") ? 'inbox' : 'outbox'%>/new'">Buat Arsip</button>
             </div>
             <div class="mt-4">
                 <ul class="list-reset">
-                    <%for(var i = 0; i < 24; i++)
+                    <%for(let mail of data)
                     {%>
                     <li class="my-2 p-4 rounded-lg border">
                         <a class="no-underline text-black" href="/mail/1">
-                            <span class="text-xl block text-black">Kedatangan CEO Segar Inc.</span>
-                            <span class="block text-sm mt-1 text-grey-darker"><span class="font-bold">XVII/SEGAR/SANGAT/1</span> · Dibuat 1 Januari 2018, Diterima 24 Januari 2018</span>
-                            <span class="block text-sm mt-1 text-grey-darkest">Dikirim oleh <span class="font-bold">Segar Inc.</span> untuk <span class="font-bold">Kantor Kecamatan Bintara</span></span>
+                            <span class="text-xl block text-black"><%=mail.mailSubject%></span>
+                            <span class="block text-sm mt-1 text-grey-darker"><span class="font-bold"><%=mail.mailCode%></span> · Dibuat <%=moment(mail.mailDate).locale('id').format('DD MMMM YYYY')%>, Diterima <%=moment(mail.incomingAt).locale('id').format('DD MMMM YYYY')%></span>
+                            <span class="block text-sm mt-1 text-grey-darkest">Dikirim oleh <span class="font-bold"><%=mail.mailFrom%></span> untuk <span class="font-bold"><%=mail.mailTo%></span></span>
                             <div class="mt-3">
                                 <a href="/mail/1/edit" class="no-underline mr-2 text-blue">Ubah</a>
                                 <a href="/mail/1/delete?confirm=false" class="no-underline ml-2 text-blue">Hapus</a>

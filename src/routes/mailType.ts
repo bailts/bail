@@ -8,7 +8,10 @@ Router.get('/', async (req, res) => {
 })
 
 Router.post('/new', async (req, res) => {
-    res.send(await MailType.insert(req.body.type))
+    let data = await MailType.insert(req.body.type)
+    if(req.accepts('html'))
+        res.redirect('/mailTypes')
+    else res.send(data)
 })
 
 Router.get('/:id', async (req, res) => {
@@ -16,11 +19,17 @@ Router.get('/:id', async (req, res) => {
 })
 
 Router.post('/:id/update', async (req, res) => {
-    res.send(await MailType.update(req.params.id, req.body.type))
+    let data = await MailType.update(req.params.id, req.body.type)
+    if(req.accepts('html'))
+        res.redirect('/mailTypes')
+    else res.send(data)
 })
 
 Router.get('/:id/delete', async (req, res) => {
-    res.send(await MailType.delete(req.params.id))
+    let data = await MailType.delete(req.params.id)
+    if(req.accepts('html'))
+        res.redirect('/mailTypes')
+    else res.send(data)
 })
 
 export default Router
