@@ -1,5 +1,4 @@
 import { employeeConnection as db } from '../../module/database'
-import { Result } from 'range-parser';
 
 const _result = { success: false, message: "", error: null }
 
@@ -47,23 +46,6 @@ class User {
             throw err
         }
     }
-
-    public static async delete(id: Number) {
-        const result = _result
-        try {
-            const success = await db('user').delete().where({ id })
-            if (success == 1) {
-                result.success = true
-                result.message = "Success"
-            } else {
-                result.message = "Unable to Delete User"
-            }
-            return result
-        } catch(err) {
-            throw err
-        }
-    }
-
 }
 
 export default User
