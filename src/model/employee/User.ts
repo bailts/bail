@@ -1,5 +1,4 @@
-import { employeeConnection as db } from '../../module/database'
-import { Result } from 'range-parser';
+import { employeeConnection as db } from '../../module/database'    
 
 const _result = { success: false, message: "", error: null }
 
@@ -59,7 +58,7 @@ class User {
                 result.message = "Unable to Delete User"
             }
             return result
-        } catch(err) {
+        } catch (err) {
             throw err
         }
     }

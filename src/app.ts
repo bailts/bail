@@ -10,6 +10,7 @@ import * as fs from 'fs'
 
 import mailTypeRouter from './routes/mailType'
 import userRouter from './routes/user'
+import mailRouter from './routes/mail'
 import StaticRouter from './routes/static'
 
 const mysql = require('mysql2')
@@ -34,7 +35,7 @@ async function CreateCSS() {
 }
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/', StaticRouter)
 var css: String = ""
@@ -45,9 +46,9 @@ app.get('/static/styles/main.css', (req, res) => {
     res.type('css')
     res.send(css)
 })
-// app.use('/api/mailType', mailTypeRouter)
+app.use('/api/mailType', mailTypeRouter)
 app.use('/api/user', userRouter)
-
+app.use('/api/mail', mailRouter)
 
 app.listen('4200', async (e) => {
     console.log('Listening on :4200')
