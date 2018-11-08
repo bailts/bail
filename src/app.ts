@@ -18,17 +18,19 @@ import accountRouter from './routes/account'
 
 const mysql = require('mysql2')
 const cssEnv = require('postcss-preset-env')
-const SQLSession = require('express-mysql-session')(mysql)
+const SQLSession = require('express-mysql-session')(session)
 const tailwind = require('tailwindcss')(process.cwd() + '/tailwind.js')
 
-// const sess = session({
-//     secret: 'onoderawaifuku',
-//     store: new SQLSession({
-//         host: 'localhost',
-//         user: 'root',
-//         database: 'bail'
-//     })
-// })
+const sess = session({
+    secret: 'onoderawaifuku',
+    store: new SQLSession({
+        host: 'localhost',
+        user: 'root',
+        database: 'bail',
+    }),
+    resave: true,
+    saveUninitialized: true
+})
 
 const app = express()
 
