@@ -15,17 +15,19 @@
                 <h1 class="font-normal text-grey-darkest flex-grow"><%=operation%> Pengguna</h1>
             </div>
             <div class="mt-4">
-                <form method="POST" action="/api/user/new">
+                <form method="POST" action="/api/user/<%=(operation == 'Tambah')? 'new' : data.id + '/update'%>">
                     <label class="block">Nama Lengkap</label>
-                    <input class="mt-4 border rounded p-2" type="text" name="fullname" required/>
+                    <input class="mt-4 border rounded p-2" type="text" value="<%=(operation == 'Ubah') ? data.fullname : ''%>" name="fullname" required/>
                     <label class="mt-4 block">Username</label>
-                    <input class="mt-4 border rounded p-2" type="text" name="username" required/>
+                    <input class="mt-4 border rounded p-2" type="text" value="<%=(operation == 'Ubah') ? data.username : ''%>" name="username" required/>
+                    <%if(operation == 'Tambah'){%>
                     <label class="mt-4 block">Password</label>
                     <input class="mt-4 border rounded p-2" type="password" name="password" required/>
+                    <%}%>
                     <label class="mt-4 block">Peran</label>
                     <select class="mt-4 border rounded p-2 bg-white" type="text" name="level">
-                        <option value="0">Admin</option>
-                        <option value="0">Karyawan</option>
+                        <option value="0" <%=(operation == 'Ubah' && data.level == 0) ? 'selected' : ''%>>Admin</option>
+                        <option value="1" <%=(operation == 'Ubah' && data.level == 1) ? 'selected' : ''%></option>Karyawan</option>
                     </select>
                     <input class="block mt-4 py-2 px-4 rounded bg-green text-white" value="Simpan" type="submit"/>
                 </form>
