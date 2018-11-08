@@ -11,6 +11,7 @@ import * as fs from 'fs'
 import mailTypeRouter from './routes/mailType'
 import userRouter from './routes/user'
 import mailRouter from './routes/mail'
+import dispositionRouter from './routes/disposition'
 import StaticRouter from './routes/static'
 
 const mysql = require('mysql2')
@@ -49,6 +50,7 @@ app.get('/static/styles/main.css', (req, res) => {
 app.use('/api/mailType', mailTypeRouter)
 app.use('/api/user', userRouter)
 app.use('/api/mail', mailRouter)
+app.use('/api/disposition', dispositionRouter)
 
 app.listen('4200', async (e) => {
     console.log('Listening on :4200')
