@@ -11,6 +11,7 @@ import * as fs from 'fs'
 import mailTypeRouter from './routes/mailType'
 import userRouter from './routes/user'
 import StaticRouter from './routes/static'
+import accountRouter from './routes/account'
 
 const mysql = require('mysql2')
 const cssEnv = require('postcss-preset-env')
@@ -47,6 +48,7 @@ app.get('/static/styles/main.css', (req, res) => {
 })
 // app.use('/api/mailType', mailTypeRouter)
 app.use('/api/user', userRouter)
+app.use('/api/account', accountRouter)
 
 
 app.listen('4200', async (e) => {
