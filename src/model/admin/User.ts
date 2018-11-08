@@ -1,73 +1,67 @@
-import { adminConnection as db } from '../../module/database'
+import { employeeConnection as db } from '../../module/database'
 
 const _result = { success: false, message: "", error: null }
 
-class MailType {
+class User {
 
     public static async get()
     public static async get(id: Number)
 
     public static async get(id?: Number) {
         if (id == undefined) {
-            return await db('mailtype').select()
+            return await db('user').select()
         } else {
-            return await db('mailtype').select().where({ id })
+            return await db('user').select().where({ id })
         }
     }
 
-    public static async insert(type: String) {
+    public static async insert(username: String, password: String, fullname: String, level: Number) {
         const result = _result
-
         try {
-            const success = await db('mailtype').insert({ type })
+            const success = await db('user').insert({ username, password, fullname, level })
             if (success.length > 0) {
                 result.success = true
                 result.message = "Success"
             } else {
-                result.message = "Unable to insert new mailType"
+                result.message = "Unable to insert new User"
             }
             return result
         } catch (err) {
-            result.error = err.message
-            return result
+            throw err
         }
     }
 
-    public static async update(id: Number, type: String) {
+    public static async update(id: Number, username: String, password: String, fullname: String, level: Number) {
         const result = _result
-
         try {
-            const success = await db('mailtype').update({ type }).where({ id })
+            const success = await db('user').update({ username, password, fullname, level }).where({ id })
             if (success == 1) {
                 result.success = true
                 result.message = "Success"
             } else {
-                result.message = "Unable to update new mailType"
+                result.message = "Unable to update User"
             }
             return result
         } catch (err) {
-            result.error = err.message
-            return result
+            throw err
         }
     }
 
     public static async delete(id: Number) {
         const result = _result
-
         try {
-            const success = await db('mailtype').delete().where({ id })
+            const success = await db('user').delete().where({ id })
             if (success == 1) {
                 result.success = true
                 result.message = "Success"
             } else {
-                result.message = "Unable to delete mailType"
+                result.message = "Unable to Delete User"
             }
             return result
         } catch (err) {
-            result.error = err.message
-            return result
+            throw err
         }
     }
 }
 
-export default MailType
+export default User
