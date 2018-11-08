@@ -7,6 +7,7 @@ import * as bodyParser from 'body-parser'
 import * as moment from 'moment'
 import * as postcss from 'postcss'
 import * as fs from 'fs'
+import * as path from 'path'
 
 import mailTypeRouter from './routes/mailType'
 import userRouter from './routes/user'
@@ -36,6 +37,7 @@ async function CreateCSS() {
     css = (await postcss([cssEnv, tailwind]).process(file, { from: process.cwd() + '/main.css' })).css
 }
 
+app.use('/static', express.static(path.join(process.cwd(), 'static')))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
