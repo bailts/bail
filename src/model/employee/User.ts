@@ -1,5 +1,6 @@
 import { employeeConnection as db } from '../../module/database'
 import { Result } from 'range-parser';
+import Password from '../../module/password'
 
 const _result = { success: false, message: "", error: null }
 
@@ -19,7 +20,7 @@ class User {
     public static async insert(username: String, password: String, fullname: String, level: Number) {
         const result = _result
         try {
-            const success = await db('user').insert({ username, password, fullname, level })
+            const success = await db('user').insert({ username, password: Password.encrypt(password), fullname, level })
             if (success.length > 0) {
                 result.success = true
                 result.message = "Success"
