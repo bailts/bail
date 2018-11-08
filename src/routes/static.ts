@@ -16,7 +16,7 @@ Static.get('/outbox', (req, res) => {
 })
 
 Static.get('/mail/new', (req, res) => {
-    res.render('addEditMail')
+    res.render('addEditMail', {operation: 'Tambah', data: {}})
 })
 
 Static.get('/mail/:id', (req, res) => {
@@ -24,7 +24,7 @@ Static.get('/mail/:id', (req, res) => {
 })
 
 Static.get('/mail/:id/edit', (req, res) => {
-    res.render('addEditMail')
+    res.render('addEditMail', {operation: 'Edit'})
 })
 
 Static.get('/disposition', (req, res) => {
