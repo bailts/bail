@@ -31,7 +31,11 @@ Router.post('/:id/update', async (req, res) => {
 })
 
 Router.get('/:id/delete', async (req, res) => {
-    res.send(await AdminUser.delete(req.params.id))
+    let data = await AdminUser.delete(req.params.id)
+    if(req.accepts('html'))
+        res.redirect('/users')
+    else
+        res.send(data)
 })
 
 export default Router
