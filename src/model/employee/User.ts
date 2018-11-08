@@ -1,4 +1,4 @@
-import { employeeConnection as db } from '../../module/database'
+import { employeeConnection as db } from '../../module/database'    
 
 const _result = { success: false, message: "", error: null }
 
