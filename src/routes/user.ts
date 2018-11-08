@@ -20,9 +20,13 @@ Router.get('/:id', async (req, res) => {
     res.send(await User.get(req.params.id))
 })
 
-Router.put('/:id/update', async (req, res) => {
+Router.post('/:id/update', async (req, res) => {
     const { username, password, fullname, level } = req.body
-    res.send(await User.update(req.params.id, username, password, fullname, level))
+    let data = await User.update(req.params.id, username, password, fullname, level)
+    if(req.accepts('html'))
+        res.redirect('/users')
+    else
+        res.send(data)
 })
 
 Router.get('/:id/delete', async (req, res) => {

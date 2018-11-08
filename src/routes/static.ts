@@ -38,7 +38,12 @@ Static.get('/users', async (req, res) => {
 })
 
 Static.get('/user/new', (req, res) => {
-    res.render('addEditUser', {operation: 'Tambah'})
+    res.render('addEditUser', {operation: 'Tambah', data: {}})
+})
+
+Static.get('/user/:id/edit', async (req, res) => {
+    let data = await User.get(req.params.id)
+    res.render('addEditUser', {operation: 'Ubah', data: data[0]})
 })
 
 Static.get('/mailTypes', async (req, res) => {

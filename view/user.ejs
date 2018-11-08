@@ -26,8 +26,8 @@
                             <span class="text-xl block text-black"><%=e.fullname%></span>
                             <span class="block text-sm mt-1 text-grey-darker"><span class="font-bold"><%=e.username%></span> · <%=(e.level == 1) ? 'Karyawan' : 'Admin'%></span>
                             <div class="mt-3">
-                                <a href="/mail/1/edit" class="no-underline mr-2 text-blue">Ubah</a>
-                                <a href="/mail/1/delete?confirm=false" class="no-underline ml-2 text-blue">Hapus</a>
+                                <a href="/user/<%=e.id%>/edit" class="no-underline mr-2 text-blue">Ubah</a>
+                                <a href="/user/1/delete?confirm=false" class="no-underline ml-2 text-blue">Hapus</a>
                             </div>
                         </a>
                     </li>
