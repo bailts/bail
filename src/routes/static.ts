@@ -59,4 +59,8 @@ Static.get('/mailType/:id/edit', async (req, res) => {
     res.render('addEditType', {operation: 'Edit', data: data[0]})
 })
 
+Static.get('/login', async (req, res) => {
+    res.render('login')
+})
+
 export default Static

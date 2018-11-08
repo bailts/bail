@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/styles/main.css" />
+    <title>Bail - Masuk</title>
+    <style>
+        .root {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .heroContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 3;
+        }
+
+        .heroContainer img {
+            width: 32rem;
+        }
+
+        .loginContainer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 4rem;
+        }
+
+        .loginContainer h3 {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root">
+        <div class="heroContainer">
+            <img src="/static/img/hero_login.svg" />
+            <span class="text-4xl bg-black text-white mt-8">
+                <span class="bg-green px-2 inline-block">B</span>
+                <span class="px-2 inline-block">A</span>
+                <span class="px-2 inline-block">I</span>
+                <span class="px-2 inline-block">L</span>
+            </span>
+        </div>
+        <div class="loginContainer">
+            <h3>Masuk</h3>
+            <form class="w-full">
+                <input class="border p-4 w-full rounded block mt-4" type="text" name="username" placeholder="Username" />
+                <input class="border p-4 w-full rounded block mt-4" type="password" name="password" placeholder="Password" />
+                <button class="rounded p-4 bg-green text-white mt-6 w-full" type="submit" name="submit">Masuk</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
