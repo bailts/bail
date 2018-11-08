@@ -3,8 +3,12 @@ import Mail from '../model/employee/Mail'
 
 const Router = express.Router()
 
-Router.get('/', async (req, res) => {
-    res.send(await Mail.get())
+Router.get('/inbox', async (req, res) => {
+    res.send(await Mail.get('Inbox'))
+})
+
+Router.get('/outbox', async (req, res) => {
+    res.send(await Mail.get('Outbox'))
 })
 
 Router.post('/new', async (req, res) => {

@@ -4,14 +4,22 @@ const _result = { success: false, message: "", error: null }
 
 class Mail {
     
-    public static async get()
-    public static async get(id: Number)
+    public static async get(type: String)
+    public static async get(type: String, id: Number)
 
-    public static async get(id?: Number) {
+    public static async get(type?: String, id?: Number) {
         if (id == undefined) {
-            return await db('mail').select()
+            if(type == 'Inbox')
+                return await db('mail').select().where('status', 'IN')
+            else if(type == 'Outbox')
+                return await db('mail').select().where('status', 'OUT')
+            else return await db('mail').select()
         } else {
-            return await db('mail').select().where({ id })
+            if(type == 'Inbox')
+                return await db('mail').select().where({ id, status: 'IN'})
+            else if(type == 'Outbox')
+                return await db('mail').select().where({ id, status: 'OUT' })
+            else return await db('mail').select().where({ id })
         }
     }
 

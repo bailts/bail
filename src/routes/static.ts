@@ -1,31 +1,44 @@
 import * as express from 'express'
+import * as moment from 'moment'
 import User from '../model/employee/User'
 import MailType from '../model/admin/MailType'
+import Mail from '../model/employee/Mail'
 
 const Static = express.Router()
+
+Static.use((req, res, next) => {
+    res.locals.moment = moment
+    next()
+})
 
 Static.get('/', (req, res) => {
     res.render('index')
 })
 
-Static.get('/inbox', (req, res) => {
-    res.render('mailbox', {type: 'Masuk'})
+Static.get('/inbox', async (req, res) => {
+    let data = await Mail.get('Inbox')
+    res.render('mailbox', {type: 'Masuk', data, ...res.locals})
 })
 
-Static.get('/outbox', (req, res) => {
-    res.render('mailbox', {type: 'Keluar'})
+Static.get('/outbox', async (req, res) => {
+    let data = await Mail.get('Outbox')
+    res.render('mailbox', {type: 'Keluar', data, ...res.locals})
 })
 
-Static.get('/mail/new', (req, res) => {
-    res.render('addEditMail', {operation: 'Tambah', data: {}})
+Static.get('/inbox/new', (req, res) => {
+    res.render('addEditMail', {operation: 'Tambah', data: {}, to: 'Inbox'})
+})
+Static.get('/outbox/new', (req, res) => {
+    res.render('addEditMail', {operation: 'Tambah', data: {}, to: 'Outbox'})
 })
 
 Static.get('/mail/:id', (req, res) => {
     res.render('mail')
 })
 
-Static.get('/mail/:id/edit', (req, res) => {
-    res.render('addEditMail', {operation: 'Edit'})
+Static.get('/mail/:id/edit', async (req, res) => {
+    let data = await Mail.get('Inbox', req.params.id)
+    res.render('addEditMail', {operation: 'Edit', data: data[0]})
 })
 
 Static.get('/disposition', (req, res) => {
