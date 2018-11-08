@@ -1,5 +1,4 @@
 import { employeeConnection as db } from '../../module/database'
-import Password from '../../module/password'
 
 const _result = { success: false, message: "", error: null }
 
@@ -19,7 +18,7 @@ class User {
     public static async insert(username: String, password: String, fullname: String, level: Number) {
         const result = _result
         try {
-            const success = await db('user').insert({ username, password: Password.encrypt(password), fullname, level })
+            const success = await db('user').insert({ username, password, fullname, level })
             if (success.length > 0) {
                 result.success = true
                 result.message = "Success"
@@ -35,16 +34,28 @@ class User {
     public static async update(id: Number, username: String, password: String, fullname: String, level: Number) {
         const result = _result
         try {
-            let success
-            if(password != undefined)
-                success = await db('user').update({ username, password, fullname, level }).where({ id })
-            else
-                success = await db('user').update({ username, fullname, level }).where({ id })
+            const success = await db('user').update({ username, password, fullname, level }).where({ id })
             if (success == 1) {
                 result.success = true
                 result.message = "Success"
             } else {
-                result.message = "Unable to update User "
+                result.message = "Unable to update User"
+            }
+            return result
+        } catch (err) {
+            throw err
+        }
+    }
+
+    public static async delete(id: Number) {
+        const result = _result
+        try {
+            const success = await db('user').delete().where({ id })
+            if (success == 1) {
+                result.success = true
+                result.message = "Success"
+            } else {
+                result.message = "Unable to Delete User"
             }
             return result
         } catch (err) {
